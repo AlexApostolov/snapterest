@@ -6,17 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Alexander Apostolov",
-  "license": "ISC",
+  "author": "",
+  "license": "BSD-2-Clause",
   "devDependencies": {
-    "babelify": "^7.3.0",
-    "browserify": "^14.1.0",
-    "gulp": "^3.9.1",
-    "vinyl-source-stream": "^1.1.0"
+    "browserify": "~11.0.1",
+    "gulp": "~3.9.0",
+    "babelify": "~6.3.0",
+    "vinyl-source-stream": "~1.1.0"
   },
   "dependencies": {
-    "react": "^0.14.0-beta3",
-    "react-dom": "^0.14.0-beta3",
-    "snapkite-stream-client": "^1.0.3"
+    "react-dom": "~0.14.0-beta3",
+    "react": "~0.14.0-beta3",
+    "snapkite-stream-client": "~1.0.3"
   }
 }

@@ -1,54 +1,56 @@
-var React = require('react');
-var Stream = require('./Stream.react');
-var Collection = require('./Collection.react');
+import React from 'react';
+import Stream from './Stream.react';
+import Collection from './Collection.react';
 
-var Application = React.createClass({
-  getInitialState: function() {
-    return {
+class Application extends React.Component {
+  constructor() {
+    super();
+    this.state = {
       collectionTweets: {}
-    };
-  },
-  addTweetToCollection: function (tweet) {
-    var collectionTweets = this.state.collectionTweets;
+  };
+}
 
+  addTweetToCollection(tweet) {
+    const {collectionTweets} = this.state;
     collectionTweets[tweet.id] = tweet;
 
     this.setState({
-      collectionTweets: collectionTweets
+      collectionTweets
     });
-  },
-  removeTweetFromCollection: function(tweet) {
-    var collectionTweets = this.state.collectionTweets;
+  }
 
+  removeTweetFromCollection(tweet) {
+    const {collectionTweets} = this.state;
     delete collectionTweets[tweet.id];
 
     this.setState({
-      collectionTweets: collectionTweets
+      collectionTweets
     });
-  },
-  removeAllTweetsFromCollection: function() {
+  }
+
+  removeAllTweetsFromCollection() {
     this.setState({
       collectionTweets: {}
     });
-  },
-  render: function() {
+  }
+
+  render() {
     return (
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-4 text-center">
-            <Stream onAddTweetToCollection={this.addTweetToCollection} />
+            <Stream onAddTweetToCollection={this.addTweetToCollection.bind(this)} />
           </div>
           <div className="col-md-8">
             <Collection
               tweets={this.state.collectionTweets}
-              onRemoveTweetFromCollection={this.removeTweetFromCollection}
-              onRemoveAllTweetsFromCollection={this.removeAllTweetsFromCollection}
-            />
+              onRemoveTweetFromCollection={this.removeTweetFromCollection.bind(this)}
+              onRemoveAllTweetsFromCollection={this.removeAllTweetsFromCollection.bind(this)} />
           </div>
         </div>
       </div>
     );
   }
-});
+}
 
-module.exports = Application;
+export default Application;
